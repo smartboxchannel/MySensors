@@ -100,8 +100,11 @@ bool hwInit(void)
 
 	// Enable cache on >= NRF52
 #ifndef NRF51
+#if defined(NRF52) ||  defined(NRF52840)
 	NRF_NVMC->ICACHECNF = NVMC_ICACHECNF_CACHEEN_Msk;
 #endif
+#endif
+
 
 	// Suspend UART
 	NRF_UART0->TASKS_STOPRX = 1;
