@@ -137,6 +137,11 @@ void _begin(void)
 
 	// set defaults
 	_coreConfig.presentationSent = false;
+#ifdef MY_NRF5_PA
+	hwPinMode(TXEN_PIN,  OUTPUT);
+	hwPinMode(RXEN_PIN,  OUTPUT);
+	hwDigitalWrite(RXEN_PIN, 0x1);
+#endif
 
 	// Call sketch before() (if defined)
 	if (before) {
